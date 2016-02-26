@@ -1,6 +1,21 @@
 package com.epam.anuar.editor.text;
 
-public class Word extends SentencePart{
-    private char value;
-    String word;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Word extends Sentence{
+    List<Letter> letters = new ArrayList<Letter>();
+
+    public void add(Letter letter) {
+        letters.add(letter);
+    }
+
+    public String getWordString(StringBuilder sb) {
+        for (int i = 0; i < letters.size(); i++) {
+            sb.append(letters.get(i).getLetterString());
+        }
+        return sb.toString();
+    }
+
+
 }

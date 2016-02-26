@@ -1,10 +1,24 @@
 package com.epam.anuar.editor;
 
-import com.epam.anuar.editor.text.Text;
+import com.epam.anuar.editor.parse.Parser;
+import com.epam.anuar.editor.text.*;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
 
 public class Runner {
-    /*public static void main(String[] args) {
-        String filename = "book-ex.txt";
+
+    static String value = "Hello, my friend. \n" +
+            "This is my text processing program!            It's so simple, but very hard for me\n" +
+            "                        I hope it will be easier in future, cause i            can become crazy. My, appreciations? Ok.";
+    public static void main(String[] args) {
+
+
+
+
+
+        /*String filename = "book-ex.txt";
         Scanner scan = null;
         try {
             FileReader fl = new FileReader(filename);
@@ -19,16 +33,15 @@ public class Runner {
             if (scan != null) {
                 scan.close();
             }
-        }
-    }*/
-    public static char[] ch = new char[128];
+        }*/
 
-    public static void main(String[] args) {
-
-        for (int i = 0; i < 127; i++) {
-            ch[i] = (char) i;
-            System.out.println(ch[i]);
-        }
-
+        System.out.println(value);
+        System.out.println();
+        Text t = Parser.parseText(value);
+        StringBuilder sb = new StringBuilder();
+        String string = t.getTextString(sb);
+        System.out.println(string);
     }
+
+
 }
