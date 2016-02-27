@@ -13,6 +13,7 @@ public class Sentence extends Paragraph{
     public String getSentenceString(StringBuilder sb) {
         for (int i = 0; i < words.size(); i++) {
             words.get(i).getWordString(sb);
+            sb.append(" ");
         }
         return sb.toString();
     }

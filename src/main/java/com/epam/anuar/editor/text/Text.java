@@ -13,6 +13,7 @@ public class Text {
     public String getTextString(StringBuilder sb) {
         for (int i = 0; i < paragraphs.size(); i++) {
             paragraphs.get(i).getParagraphString(sb);
+            sb.append("\n");
         }
         return sb.toString();
     }

@@ -7,7 +7,7 @@ public class Parser {
         Text text = new Text();
         String[] paragraphArray = value.split("(?<=[\\n])");
         for (String partOfArray : paragraphArray) {
-            partOfArray.trim();
+            partOfArray = partOfArray.trim();
             Paragraph paragraph = parseParagraph(partOfArray);
             text.add(paragraph);
         }
@@ -18,7 +18,7 @@ public class Parser {
         Paragraph paragraph = new Paragraph();
         String[] sentenceArray = value.split("(?<=[.?!])");
         for (String partOfArray : sentenceArray) {
-            partOfArray.trim();
+            partOfArray = partOfArray.trim();
             Sentence sentence = parseSentence(partOfArray);
             paragraph.add(sentence);
         }
@@ -27,9 +27,9 @@ public class Parser {
 
     private static Sentence parseSentence(String value) {
         Sentence sentence = new Sentence();
-        String[] WordArray = value.split("(?<=[ ])");
+        String[] WordArray = value.split("(?=[ ])(?= [a-zA-Z])");
         for (String partOfArray : WordArray) {
-            partOfArray.trim();
+            partOfArray = partOfArray.trim();
             Word word = parseWord(partOfArray);
             sentence.add(word);
         }
