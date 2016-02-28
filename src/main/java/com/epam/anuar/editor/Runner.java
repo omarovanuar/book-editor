@@ -1,11 +1,7 @@
 package com.epam.anuar.editor;
 
 import com.epam.anuar.editor.parse.Parser;
-import com.epam.anuar.editor.text.*;
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.Scanner;
+import com.epam.anuar.editor.text.Text;
 
 public class Runner {
 

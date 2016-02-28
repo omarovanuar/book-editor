@@ -38,11 +38,18 @@ public class Parser {
 
     private static SentencePart parseSentencePart(String value) {
         SentencePart sentencePart = new SentencePart();
-        String[] wordArray = value.split("(?=[.,!?;:])");
-        for (String partOfArray : wordArray) {
+        String[] wordAndPunctArray = value.split("(?=[.,!?;:])");
+        for (int i = 0; i < wordAndPunctArray.length; i++) {
+            String partOfArray = wordAndPunctArray[i];
             partOfArray = partOfArray.trim();
-            Word word = parseWord(partOfArray);
-            sentencePart.add(word);
+
+            if (partOfArray.matches("[.,!?;:]")){
+                Punctuation punctuation = parsePunctuation(partOfArray);
+                sentencePart.add(punctuation);
+            } else {
+                Word word = parseWord(partOfArray);
+                sentencePart.add(word);
+            }
         }
         return sentencePart;
     }
@@ -55,5 +62,15 @@ public class Parser {
             word.add(letter);
         }
         return word;
+    }
+
+    private static Punctuation parsePunctuation(String value) {
+        Punctuation punctuation = new Punctuation();
+        char[] CharArray = value.toCharArray();
+        for (char partOfArray : CharArray) {
+            PunctuationChar punctuationChar = PunctuationChar.of(partOfArray);
+            punctuation.add(punctuationChar);
+        }
+        return punctuation;
     }
 }
