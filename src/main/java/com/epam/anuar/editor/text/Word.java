@@ -3,7 +3,7 @@ package com.epam.anuar.editor.text;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Word extends Sentence{
+public class Word extends SentencePart{
     List<Letter> letters = new ArrayList<Letter>();
 
     public void add(Letter letter) {

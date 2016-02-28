@@ -27,13 +27,24 @@ public class Parser {
 
     private static Sentence parseSentence(String value) {
         Sentence sentence = new Sentence();
-        String[] WordArray = value.split("(?=[ ])(?= [a-zA-Z])");
-        for (String partOfArray : WordArray) {
+        String[] sentencePartArray = value.split("(?= [a-zA-Z])");
+        for (String partOfArray : sentencePartArray) {
             partOfArray = partOfArray.trim();
-            Word word = parseWord(partOfArray);
-            sentence.add(word);
+            SentencePart sentencePart = parseSentencePart(partOfArray);
+            sentence.add(sentencePart);
         }
         return sentence;
+    }
+
+    private static SentencePart parseSentencePart(String value) {
+        SentencePart sentencePart = new SentencePart();
+        String[] wordArray = value.split("(?=[.,!?;:])");
+        for (String partOfArray : wordArray) {
+            partOfArray = partOfArray.trim();
+            Word word = parseWord(partOfArray);
+            sentencePart.add(word);
+        }
+        return sentencePart;
     }
 
     private static Word parseWord(String value) {

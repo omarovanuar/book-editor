@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sentence extends Paragraph{
-    List<Word> words = new ArrayList<Word>();
+    List<SentencePart> sentenceParts = new ArrayList<SentencePart>();
 
-    public void add(Word sentencePart) {
-        words.add(sentencePart);
+    public void add(SentencePart sentencePart) {
+        sentenceParts.add(sentencePart);
     }
 
     public String getSentenceString(StringBuilder sb) {
-        for (int i = 0; i < words.size(); i++) {
-            words.get(i).getWordString(sb);
+        for (int i = 0; i < sentenceParts.size(); i++) {
+            sentenceParts.get(i).getSentencePartString(sb);
             sb.append(" ");
         }
         return sb.toString();
