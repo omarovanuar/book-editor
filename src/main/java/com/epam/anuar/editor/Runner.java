@@ -5,7 +5,7 @@ import com.epam.anuar.editor.text.Text;
 
 public class Runner {
 
-    static String value = "Hello,         my friend.\n" +
+    static String value = "Hello,         ';my friend.\n" +
             "This is my text processing program! It's so simple, but very hard for me.\n" +
             "                        I hope it will be easier in future, cause i            can become crazy. My, appreciations? Ok.";
     public static void main(String[] args) {

@@ -27,7 +27,7 @@ public class Parser {
 
     private static Sentence parseSentence(String value) {
         Sentence sentence = new Sentence();
-        String[] sentencePartArray = value.split("(?= [a-zA-Z])");
+        String[] sentencePartArray = value.split("(?= [a-zA-Z\\p{Punct}])");
         for (String partOfArray : sentencePartArray) {
             partOfArray = partOfArray.trim();
             SentencePart sentencePart = parseSentencePart(partOfArray);
@@ -38,17 +38,20 @@ public class Parser {
 
     private static SentencePart parseSentencePart(String value) {
         SentencePart sentencePart = new SentencePart();
-        String[] wordAndPunctArray = value.split("(?=[.,!?;:])");
+        String[] wordAndPunctArray = value.split("(?<=[\\p{Punct}])|(?=[\\p{Punct}])");
         for (int i = 0; i < wordAndPunctArray.length; i++) {
             String partOfArray = wordAndPunctArray[i];
             partOfArray = partOfArray.trim();
 
-            if (partOfArray.matches("[.,!?;:]")){
+
+            if (partOfArray.matches("[\\p{Punct}]")){
                 Punctuation punctuation = parsePunctuation(partOfArray);
                 sentencePart.add(punctuation);
+                sentencePart.add(SentencePart.EMPTY_WORD);
             } else {
                 Word word = parseWord(partOfArray);
                 sentencePart.add(word);
+                sentencePart.add(SentencePart.EMPTY_PUNCT);
             }
         }
         return sentencePart;
