@@ -16,4 +16,8 @@ public class Punctuation extends SentencePart {
         }
         return sb.toString();
     }
+
+    public PunctuationChar getPunctuationChar(int index) {
+        return punctuationChars.get(index);
+    }
 }

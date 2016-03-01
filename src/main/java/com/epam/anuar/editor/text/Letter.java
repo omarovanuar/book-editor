@@ -28,4 +28,6 @@ public class Letter extends Word{
             return value == letterArray[value].value;
         }
     }
+
+
 }

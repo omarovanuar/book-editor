@@ -16,4 +16,8 @@ public class Paragraph extends Text{
         }
         return sb.toString();
     }
+
+    public Sentence getSentence(int index) {
+        return sentences.get(index);
+    }
 }

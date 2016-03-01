@@ -10,11 +10,25 @@ public class Sentence extends Paragraph{
         sentenceParts.add(sentencePart);
     }
 
+    public int getSentencePartsSize() {
+        int counter = 0;
+        for (SentencePart s : sentenceParts) {
+            if (s != null) {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
     public String getSentenceString(StringBuilder sb) {
         for (SentencePart sentencePart : sentenceParts) {
             sentencePart.getSentencePartString(sb);
             sb.append(" ");
         }
         return sb.toString();
+    }
+
+    public SentencePart getSentencePart(int index) {
+        return sentenceParts.get(index);
     }
 }

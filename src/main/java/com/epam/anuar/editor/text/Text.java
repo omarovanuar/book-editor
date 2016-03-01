@@ -18,4 +18,8 @@ public class Text {
         return sb.toString();
     }
 
+    public Paragraph getParagraph(int index) {
+        return paragraphs.get(index);
+    }
+
 }

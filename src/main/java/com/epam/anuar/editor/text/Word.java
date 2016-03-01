@@ -6,6 +6,8 @@ import java.util.List;
 public class Word extends SentencePart{
     List<Letter> letters = new ArrayList<>();
 
+
+
     public void add(Letter letter) {
         letters.add(letter);
     }
@@ -17,5 +19,7 @@ public class Word extends SentencePart{
         return sb.toString();
     }
 
-
+    public Letter getLetter(int index) {
+        return letters.get(index);
+    }
 }

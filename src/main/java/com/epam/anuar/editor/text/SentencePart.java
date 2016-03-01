@@ -17,7 +17,15 @@ public class SentencePart extends Sentence{
 
     }
 
-
+    public int getWordsSize() {
+        int counter = 0;
+        for (Word word : words) {
+            if (word != null) {
+                counter++;
+            }
+        }
+        return counter;
+    }
 
     public String getSentencePartString(StringBuilder sb) {
         for (int i = 0; i < Math.max(words.size(), punctuations.size()); i++) {
@@ -26,6 +34,14 @@ public class SentencePart extends Sentence{
             if (i < punctuations.size()) punctuations.get(i).getPunctuationString(sb);
         }
         return sb.toString();
+    }
+
+    public Word getWord(int index) {
+        return words.get(index);
+    }
+
+    public Punctuation getPunctuation(int index) {
+        return punctuations.get(index);
     }
 
 

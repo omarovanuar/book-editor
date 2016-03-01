@@ -3,6 +3,7 @@ package com.epam.anuar.editor.parse;
 import com.epam.anuar.editor.text.*;
 
 public class Parser {
+
     public static Text parseText (String value) {
         Text text = new Text();
         String[] paragraphArray = value.split("(?<=[\\n])");
