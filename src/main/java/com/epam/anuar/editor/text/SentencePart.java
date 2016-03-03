@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SentencePart extends Sentence{
-    List<Word> words = new ArrayList<>();
-    List<Punctuation> punctuations = new ArrayList<>();
+    public List<Word> words = new ArrayList<>();
+    public List<Punctuation> punctuations = new ArrayList<>();
     public static final Word EMPTY_WORD = new Word();
     public static final Punctuation EMPTY_PUNCT = new Punctuation();
 
@@ -17,19 +17,8 @@ public class SentencePart extends Sentence{
 
     }
 
-    public int getWordsSize() {
-        int counter = 0;
-        for (Word word : words) {
-            if (word != null) {
-                counter++;
-            }
-        }
-        return counter;
-    }
-
     public String getSentencePartString(StringBuilder sb) {
         for (int i = 0; i < Math.max(words.size(), punctuations.size()); i++) {
-
             if (i < words.size()) words.get(i).getWordString(sb);
             if (i < punctuations.size()) punctuations.get(i).getPunctuationString(sb);
         }
@@ -44,5 +33,11 @@ public class SentencePart extends Sentence{
         return punctuations.get(index);
     }
 
+    public List<Word> getWords() {
+        return words;
+    }
 
+    public List<Punctuation> getPunctuations() {
+        return punctuations;
+    }
 }

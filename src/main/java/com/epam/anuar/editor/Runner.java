@@ -2,12 +2,12 @@ package com.epam.anuar.editor;
 
 import com.epam.anuar.editor.factory.TextFactory;
 import com.epam.anuar.editor.parse.Parser;
+import com.epam.anuar.editor.task.ReplaceWords;
 import com.epam.anuar.editor.text.Text;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.CharBuffer;
 
 public class Runner {
     public static void main(String[] args) throws IOException {
@@ -30,14 +30,14 @@ public class Runner {
             }
         }
 
-        System.out.println(value);
+
         System.out.println(value);
         Text t = Parser.parseText(value);
         StringBuilder sb = new StringBuilder();
         String string = t.getTextString(sb);
         System.out.println(string);
-        //String st = TextFactory.getSentence(t, 2, 2).getSentenceString(new StringBuilder());
-        //System.out.println(st);
+        System.out.println();
+        System.out.println(ReplaceWords.replaceWords(t, new StringBuilder()));
     }
 
 

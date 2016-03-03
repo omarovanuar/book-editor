@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Word extends SentencePart{
-    List<Letter> letters = new ArrayList<>();
-
-
+    public List<Letter> letters = new ArrayList<>();
 
     public void add(Letter letter) {
         letters.add(letter);
