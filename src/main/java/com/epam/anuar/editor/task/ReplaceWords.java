@@ -3,7 +3,7 @@ package com.epam.anuar.editor.task;
 import com.epam.anuar.editor.text.SentencePart;
 import com.epam.anuar.editor.text.Text;
 
-import static com.epam.anuar.editor.factory.TextFactory.*;
+import static com.epam.anuar.editor.service.Service.*;
 
 public class ReplaceWords {
 

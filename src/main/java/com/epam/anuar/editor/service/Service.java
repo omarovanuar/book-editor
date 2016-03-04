@@ -1,8 +1,8 @@
-package com.epam.anuar.editor.factory;
+package com.epam.anuar.editor.service;
 
 import com.epam.anuar.editor.text.*;
 
-public class TextFactory {
+public class Service {
     public static Paragraph getParagraph(Text text, int indexOfParagraph) {
         return text.getParagraph(indexOfParagraph);
     }

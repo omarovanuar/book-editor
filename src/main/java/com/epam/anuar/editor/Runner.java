@@ -1,6 +1,5 @@
 package com.epam.anuar.editor;
 
-import com.epam.anuar.editor.factory.TextFactory;
 import com.epam.anuar.editor.parse.Parser;
 import com.epam.anuar.editor.task.ReplaceWords;
 import com.epam.anuar.editor.text.Text;
