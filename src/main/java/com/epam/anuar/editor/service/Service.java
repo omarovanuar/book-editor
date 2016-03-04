@@ -19,33 +19,6 @@ public class Service {
         return getSentencePart(text, indexOfParagraph, indexOfSentence, indexOfSentencePart).getWord(indexOfWord);
     }
 
-    public static Word getLastWordInSentencePart(Text text, int indexOfParagraph, int indexOfSentence, int indexOfSentencePart) {
-        int notEmptyLastWordIndex = getSentencePartSize(text, indexOfParagraph, indexOfSentence, indexOfSentencePart)-1;
-        for (int i = 0; i < getSentencePartSize(text, indexOfParagraph, indexOfSentence, indexOfSentencePart); i++) {
-            if (getWord(text, indexOfParagraph, indexOfSentence, indexOfSentencePart,
-                    notEmptyLastWordIndex).equals(SentencePart.EMPTY_WORD)) {
-                notEmptyLastWordIndex--;
-            } else {
-                break;
-            }
-        }
-        return getWord(text, indexOfParagraph, indexOfSentence, indexOfSentencePart, notEmptyLastWordIndex);
-    }
-
-    //unfinished method
-    public static Word getFirstWordInSentencePart(Text text, int indexOfParagraph, int indexOfSentence, int indexOfSentencePart) {
-        int notEmptyFirstWordIndex = 0;
-        for (int i = 0; i < getSentencePartSize(text, indexOfParagraph, indexOfSentence, indexOfSentencePart); i++) {
-            if (getWord(text, indexOfParagraph, indexOfSentence, indexOfSentencePart,
-                    notEmptyFirstWordIndex).equals(SentencePart.EMPTY_WORD)) {
-                notEmptyFirstWordIndex++;
-            } else {
-                break;
-            }
-        }
-        return getWord(text, indexOfParagraph, indexOfSentence, indexOfSentencePart, notEmptyFirstWordIndex);
-    }
-
     public static Punctuation getPunctuation(Text text, int indexOfParagraph, int indexOfSentence, int indexOfSentencePart, int indexOfPunctuation) {
         return getSentencePart(text, indexOfParagraph, indexOfSentence, indexOfSentencePart).getPunctuation(indexOfPunctuation);
     }
@@ -71,5 +44,57 @@ public class Service {
         return getSentencePart(text, indexOfParagraph, indexOfSentence, indexOfSentencePart).getWords().size();
     }
 
+    public static Word getLastWordInSentencePart(Text text, int indexOfParagraph, int indexOfSentence, int indexOfSentencePart) {
+        int notEmptyLastWordIndex = getSentencePartSize(text, indexOfParagraph, indexOfSentence, indexOfSentencePart)-1;
+        for (int i = 0; i < getSentencePartSize(text, indexOfParagraph, indexOfSentence, indexOfSentencePart); i++) {
+            if (getWord(text, indexOfParagraph, indexOfSentence, indexOfSentencePart,
+                    notEmptyLastWordIndex).equals(SentencePart.EMPTY_WORD)) {
+                notEmptyLastWordIndex--;
+            } else {
+                break;
+            }
+        }
+        return getWord(text, indexOfParagraph, indexOfSentence, indexOfSentencePart, notEmptyLastWordIndex);
+    }
 
+    public static Word getFirstWordInSentencePart(Text text, int indexOfParagraph, int indexOfSentence, int indexOfSentencePart) {
+        int notEmptyFirstWordIndex = 0;
+        for (int i = 0; i < getSentencePartSize(text, indexOfParagraph, indexOfSentence, indexOfSentencePart); i++) {
+            if (getWord(text, indexOfParagraph, indexOfSentence, indexOfSentencePart,
+                    notEmptyFirstWordIndex).equals(SentencePart.EMPTY_WORD)) {
+                notEmptyFirstWordIndex++;
+            } else {
+                break;
+            }
+        }
+        return getWord(text, indexOfParagraph, indexOfSentence, indexOfSentencePart, notEmptyFirstWordIndex);
+    }
+
+    public static void replaceFirstWord(Text text, int iPar, int iSent, int iSentP, StringBuilder sb) {
+        if (getSentencePartSize(text, iPar, iSent, iSentP) > 1) {
+            for (int l = 0; l < getSentencePartSize(text, iPar, iSent, iSentP); l++) {
+                if (getPunctuation(text, iPar, iSent, iSentP, l).equals(SentencePart.EMPTY_PUNCT)) {
+                    getLastWordInSentencePart(text, iPar, iSent, getSentenceSize(text, iPar ,iSent)-1).getWordString(sb);
+                } else {
+                    getPunctuation(text, iPar, iSent, iSentP, l).getPunctuationString(sb);
+                }
+            }
+        } else {
+            getWord(text, iPar, iSent, getSentenceSize(text, iPar ,iSent)-1, 0).getWordString(sb);
+        }
+    }
+
+    public static void replaceLastWord(Text text, int iPar, int iSent, int iSentP, StringBuilder sb) {
+        if (getSentencePartSize(text, iPar, iSent, iSentP) > 1) {
+            for (int l = 0; l < getSentencePartSize(text, iPar, iSent, iSentP); l++) {
+                if (getPunctuation(text, iPar, iSent, iSentP, l).equals(SentencePart.EMPTY_PUNCT)) {
+                    getFirstWordInSentencePart(text, iPar, iSent, 0).getWordString(sb);
+                } else {
+                    getPunctuation(text, iPar, iSent, getSentenceSize(text, iPar ,iSent)-1, l).getPunctuationString(sb);
+                }
+            }
+        } else {
+            getWord(text, iPar, iSent, 0, 0).getWordString(sb);
+        }
+    }
 }

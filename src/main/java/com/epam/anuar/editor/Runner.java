@@ -22,7 +22,7 @@ public class Runner {
                 value += tmp + "\n";
             }
         } catch (IOException e){
-            System.err.println(e);
+            e.printStackTrace();
         } finally {
             if (fr != null) {
                 fr.close();
