@@ -44,6 +44,16 @@ public class Service {
         return getSentencePart(text, indexOfParagraph, indexOfSentence, indexOfSentencePart).getWords().size();
     }
 
+    /** Get last word in current SentencePart, that performs sequence of words and punctuation.
+     * (for example in SentencePart: "<hello,,;;part'@  this method returns: part)
+     *
+     * @param text editing text;
+     * @param indexOfParagraph index of the current Paragraph;
+     * @param indexOfSentence index of the current Sentence;
+     * @param indexOfSentencePart index of the current SentencePart;
+     * @return last word of SentencePart.
+     */
+
     public static Word getLastWordInSentencePart(Text text, int indexOfParagraph, int indexOfSentence, int indexOfSentencePart) {
         int notEmptyLastWordIndex = getSentencePartSize(text, indexOfParagraph, indexOfSentence, indexOfSentencePart)-1;
         for (int i = 0; i < getSentencePartSize(text, indexOfParagraph, indexOfSentence, indexOfSentencePart); i++) {
@@ -57,6 +67,15 @@ public class Service {
         return getWord(text, indexOfParagraph, indexOfSentence, indexOfSentencePart, notEmptyLastWordIndex);
     }
 
+    /** Get first word in current SentencePart, that performs sequence of words and punctuation.
+     * (for example in SentencePart: "<hello,,;;part'@  this method returns: hello)
+     *
+     * @param text editing text;
+     * @param indexOfParagraph index of the current Paragraph;
+     * @param indexOfSentence index of the current Sentence;
+     * @param indexOfSentencePart index of the current SentencePart;
+     * @return first word of SentencePart.
+     */
     public static Word getFirstWordInSentencePart(Text text, int indexOfParagraph, int indexOfSentence, int indexOfSentencePart) {
         int notEmptyFirstWordIndex = 0;
         for (int i = 0; i < getSentencePartSize(text, indexOfParagraph, indexOfSentence, indexOfSentencePart); i++) {
@@ -70,6 +89,14 @@ public class Service {
         return getWord(text, indexOfParagraph, indexOfSentence, indexOfSentencePart, notEmptyFirstWordIndex);
     }
 
+    /**Put last word of the sentence instead of first. Punctuations of the sentence stay origin.
+     *
+     * @param text editing text;
+     * @param iPar index of the current Paragraph;
+     * @param iSent index of the current Sentence;
+     * @param iSentP index of the current SentencePart;
+     * @param sb StringBuilder for new text.
+     */
     public static void replaceFirstWord(Text text, int iPar, int iSent, int iSentP, StringBuilder sb) {
         if (getSentencePartSize(text, iPar, iSent, iSentP) > 1) {
             for (int l = 0; l < getSentencePartSize(text, iPar, iSent, iSentP); l++) {
@@ -83,6 +110,15 @@ public class Service {
             getWord(text, iPar, iSent, getSentenceSize(text, iPar ,iSent)-1, 0).getWordString(sb);
         }
     }
+
+    /**Put first word of the sentence instead of last. Punctuations of the sentence stay origin.
+     *
+     * @param text editing text;
+     * @param iPar index of the current Paragraph;
+     * @param iSent index of the current Sentence;
+     * @param iSentP index of the current SentencePart;
+     * @param sb StringBuilder for new text.
+     */
 
     public static void replaceLastWord(Text text, int iPar, int iSent, int iSentP, StringBuilder sb) {
         if (getSentencePartSize(text, iPar, iSent, iSentP) > 1) {

@@ -6,6 +6,12 @@ import static com.epam.anuar.editor.service.Service.*;
 
 public class ReplaceWords {
 
+
+    /**
+     * errors:
+     * - with single punctuation in beginning of sentence;
+     * - with two or more "." "!" "?" (split as sentences).
+     */
     public static String replaceWords(Text text, StringBuilder sb) {
         for (int i = 0; i < getTextSize(text); i++) {
             for (int j = 0; j < getParagraphSize(text, i); j++) {

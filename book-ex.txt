@@ -1,4 +1,4 @@
-Hello,,,,,,,        ';my friend.
+Hello,,,,,,,    ,    ';my friend.
             This, is my text processing program! It is so simple, but very hard for me.
         I hope it will be easier in future, cause i            can become crazy. My, appreciations? Ok.
 

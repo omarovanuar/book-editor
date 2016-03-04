@@ -32,10 +32,7 @@ public class Runner {
 
         System.out.println(value);
         Text t = Parser.parseText(value);
-        StringBuilder sb = new StringBuilder();
-        String string = t.getTextString(sb);
-        System.out.println(string);
-        System.out.println();
+        System.out.println(t.getTextString(new StringBuilder()));
         System.out.println(ReplaceWords.replaceWords(t, new StringBuilder()));
     }
 

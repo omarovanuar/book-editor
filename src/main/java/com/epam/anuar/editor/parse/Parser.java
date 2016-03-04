@@ -2,6 +2,16 @@ package com.epam.anuar.editor.parse;
 
 import com.epam.anuar.editor.text.*;
 
+/**
+ * Parse text to arrays of:
+ * Paragraph;
+ *      Sentence;
+ *          SentencePart;
+ *              Word;
+ *                  Letter
+ *              Punctuation;
+ *                  PunctuationChar;
+ */
 public class Parser {
 
     public static Text parseText (String value) {
@@ -17,7 +27,7 @@ public class Parser {
 
     private static Paragraph parseParagraph (String value) {
         Paragraph paragraph = new Paragraph();
-        String[] sentenceArray = value.split("(?<=[.?!])");
+        String[] sentenceArray = value.split("(?=[.?!])+");
         for (String partOfArray : sentenceArray) {
             partOfArray = partOfArray.trim();
             Sentence sentence = parseSentence(partOfArray);
@@ -37,6 +47,9 @@ public class Parser {
         return sentence;
     }
 
+    /**
+     * For right order of words and punctuations (was problems to glue text), created EMPTY_WORD and EMPTY_PUNCT that put to arrays
+     */
     private static SentencePart parseSentencePart(String value) {
         SentencePart sentencePart = new SentencePart();
         String[] wordAndPunctArray = value.split("(?<=[\\p{Punct}])|(?=[\\p{Punct}])");
