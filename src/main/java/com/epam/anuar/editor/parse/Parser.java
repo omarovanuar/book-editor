@@ -27,7 +27,7 @@ public class Parser {
 
     private static Paragraph parseParagraph (String value) {
         Paragraph paragraph = new Paragraph();
-        String[] sentenceArray = value.split("(?=[.?!])+");
+        String[] sentenceArray = value.split("(?<=[.]+[?][!])");
         for (String partOfArray : sentenceArray) {
             partOfArray = partOfArray.trim();
             Sentence sentence = parseSentence(partOfArray);

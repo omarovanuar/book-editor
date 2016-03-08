@@ -8,9 +8,8 @@ public class ReplaceWords {
 
 
     /**
-     * errors:
-     * - with single punctuation in beginning of sentence;
-     * - with two or more "." "!" "?" (split as sentences).
+     * exceptions:
+     * - with single punctuation in beginning of sentence.
      */
     public static String replaceWords(Text text, StringBuilder sb) {
         for (int i = 0; i < getTextSize(text); i++) {
