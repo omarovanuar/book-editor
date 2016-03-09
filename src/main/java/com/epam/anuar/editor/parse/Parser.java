@@ -48,7 +48,8 @@ public class Parser {
     }
 
     /**
-     * For right order of words and punctuations (was problems to glue text), created EMPTY_WORD and EMPTY_PUNCT that put to arrays
+     * For right order of words and punctuations (was problems to glue text), were created EMPTY_WORD and EMPTY_PUNCT,
+     * that put to arrays every step (if we have word, put EMPTY_PUNCT to punctuation array; if punctuation -> EMPTY_WORD to word array)
      */
     private static SentencePart parseSentencePart(String value) {
         SentencePart sentencePart = new SentencePart();
