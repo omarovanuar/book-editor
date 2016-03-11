@@ -2,6 +2,7 @@ package com.epam.anuar.editor;
 
 import com.epam.anuar.editor.parse.Parser;
 import com.epam.anuar.editor.task.ReplaceWords;
+import com.epam.anuar.editor.task.UniqueWord;
 import com.epam.anuar.editor.text.Text;
 
 import java.io.BufferedReader;
@@ -33,7 +34,8 @@ public class Runner {
         System.out.println(value);
         Text t = Parser.parseText(value);
         System.out.println(t.getTextString(new StringBuilder()));
-        System.out.println(ReplaceWords.replaceWords(t, new StringBuilder()));
+        //System.out.println(ReplaceWords.replaceWords(t, new StringBuilder()));
+        System.out.println(UniqueWord.findUniqueWord(t, new StringBuilder()));
     }
 
 

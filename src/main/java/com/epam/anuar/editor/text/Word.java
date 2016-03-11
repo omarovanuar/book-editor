@@ -20,4 +20,6 @@ public class Word extends SentencePart{
     public Letter getLetter(int index) {
         return letters.get(index);
     }
+
+
 }
