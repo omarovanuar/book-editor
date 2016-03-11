@@ -21,6 +21,7 @@ public class UniqueWord {
     }
 
     public static void compareUniqueWord(Text text, String unique, StringBuilder sb) {
+        StringBuilder tempSb = new StringBuilder();
         int count = 0;
         for (int i = 0; i < getTextSize(text); i++) {
             for (int j = 0; j < getParagraphSize(text, i); j++) {
@@ -30,10 +31,11 @@ public class UniqueWord {
                 for (int k = 0; k < getSentenceSize(text, i, j); k++) {
                     for (int l = 0; l < getSentencePartSize(text, i, j, k); l++) {
                         if (getWord(text, i, j, k, l) != SentencePart.EMPTY_WORD) {
-                            if (unique.equalsIgnoreCase(getWord(text, i, j, k, l).getWordString(new StringBuilder()))) {
+                            if (unique.equalsIgnoreCase(getWord(text, i, j, k, l).getWordString(tempSb))) {
                                 count++;
                                 break;
                             }
+                            tempSb.setLength(0);
                         } else break;
                     }
                 }
